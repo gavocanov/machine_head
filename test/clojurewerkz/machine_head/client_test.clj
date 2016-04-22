@@ -14,6 +14,22 @@
       (is (mh/connected? c))
       (mh/disconnect-and-close c))))
 
+;; commented out for now, don't know how you handle/automate tests
+;; tried on a private local cluster and seems like all is fine
+; (deftest test-connection-to-multiple-servers
+;   (dotimes [i 50]
+;     ;; Even for multiple hosts we still have to set a valid URI param
+;     ;; in the constructor of the client (it's validated in paho),
+;     ;; but it is overridden correctly when :servers is passed in
+;     ;; connect options
+;     (let [id (format "mh.tests-%d" i)
+;           c  (mh/connect "tcp://host1:1883"
+;                          id
+;                          {:servers ["tcp://host2:1883"
+;                                     "tcp://host1:1883"]})]
+;       (is (mh/connected? c))
+;       (mh/disconnect-and-close c))))
+
 (deftest test-connection-with-provided-persister
   (dotimes [i 10]
     (let [id  (format "mh.tests-%d" i)

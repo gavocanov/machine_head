@@ -24,6 +24,7 @@
     * :keep-alive-interval (int)
     * :connection-timeout (int)
     * :clean-session (bool)
+    * :servers (string seq)
     * :will {:topic :payload :qos :retain}"
   ([^String uri ^String client-id]
      (doto (prepare uri client-id)
